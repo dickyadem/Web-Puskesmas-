@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Pelayanan</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width-device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Candal">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style2.css">
+    <link href="/boxicons/css/boxicons.min.css" rel="stylesheet">
+</head>
+<style>
+    li {
+        color: black;
+    }
+
+    h1 {
+        font-size: 35px;
+    }
+
+    .tengah {
+        text-align: center;
+    }
+
+    .rata {
+        text-align: justify;
+    }
+
+    .section-title {
+        text-align: left;
+        padding-bottom: 20px;
+        padding-top: 20px;
+    }
+
+    .section-title h2 {
+        font-size: 28px;
+        font-weight: 400;
+        margin-bottom: 20px;
+        padding-top: 30px;
+        padding-bottom: 20px;
+        position: relative;
+    }
+
+    .section-title h2::before {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 120px;
+        height: 1px;
+        background: rgb(24, 23, 23);
+        bottom: 1px;
+        left: calc(50% - 60px);
+    }
+
+    .section-title h2::after {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 40px;
+        height: 3px;
+        background: #f00bbe;
+        bottom: 0;
+        left: calc(50% - 20px);
+
+    }
+</style>
+
+<body>
+    <!--banner-->
+    <section id="fasi" class="banner">
+        <div class="fasili">
+            <nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container">
+                    <div class="col-md-12">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="text" href="index.html">
+                                PUSKESMAS
+                            </a>
+                        </div>
+                        <div class="collapse navbar-collapse navbar-right" id="myNavbar">
+                            <ul class="nav navbar-nav">
+                                <li class=""><a href="index.html">Home</a></li>
+                                <li class=""><a href="Aboutus.html">About Us</a></li>
+                                <li class=""><a href="kontak.html">Contact Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <div class="atap">
+
+            </div>
+            <div class="back">
+                <center class="section-title">
+                    <h1 class="judul3 tengah "> <strong> JENIS JENIS PELAYANAN </strong> </h1>
+                </center>
+                <center>
+                    <p class="huruf rata"> Dalam memberikan pelayanan Puskesmas, kami telah
+                        menyediakan jenis - jenis
+                        pelayanan
+                        yang dapat
+                        diakses dan
+                        diberikan kepada masyarakat. Jenis - jenis pelayanan tersebut adalah sebagai berikut : </p>
+                </center>
+
+            </div>
+
+
+            <center class="section-title">
+                <h2 class="judul3 tengah"> <strong> PELAYANAN DALAM GEDUNG</strong> </h2>
+            </center>
+
+
+            <!--------loket pendaftaran---------->
+            <section class="features">
+                <div class="container">
+                    <div class="section-title">
+                        <div class="dropdown">
+                            <div><a class="link" onclick="hide_show1()">Loket Pendaftaran</a>
+                                <hr>
+                            </div>
+                            <div id="loketp" style="display: none;">
+                                <p class="adem"></p>
+                                <li> Pendaftaran pasien </li>
+                                <li> Pencatatan / rekam medis </li>
+                            </div>
+                        </div>
+
+                    </div>
+                    <script>
+                        function hide_show1() {
+                            var click = document.getElementById("loketp");
+                            if (click.style.display === "none") {
+                                click.style.display = "block";
+                            } else {
+                                click.style.display = "none";
+                            }
+                        }
+                    </script>
+                </div>
+            </section>
+
+            <!---------poli umum--------->
+            <section class="features">
+                <div class="container">
+                    <div class="section-title">
+                        <div class="dropdown">
+                            <div><a class="link" onclick="hide_show2()">Poli Umum</a>
+                                <hr>
+                            </div>
+                            <div id="poliu" style="display: none;">
+                                <p class="adem"></p>
+                                <li> Pemeriksaan awal terhadap pasien </li>
+                                <li> Pemberian resep oleh dokter </li>
+                                <li> Konsultasi </li>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        function hide_show2() {
+                            var click = document.getElementById("poliu");
+                            if (click.style.display === "none") {
+                                click.style.display = "block";
+                            } else {
+                                click.style.display = "none";
+                            }
+                        }
+                    </script>
+                </div>
+            </section>
+
+
+
+            <!--------poli gigi---------->
+            <section class="features">
+                <div class="container">
+                    <div class="section-title">
+                        <div class="dropdown">
+                            <div><a class="link" onclick="hide_show3()">Poli Gigi</a>
+                                <hr>
+                            </div>
+                            <div id="polig" style="display: none;">
+                                <p class="adem"></p>
+                                <li> Pemeriksaan gigi </li>
+                                <li> Penambalan gigi </li>
+                                <li> Pencabutan gigi </li>
+                                <li> Konsultasi </li>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        function hide_show3() {
+                            var click = document.getElementById("polig");
+                            if (click.style.display === "none") {
+                                click.style.display = "block";
+                            } else {
+                                click.style.display = "none";
+                            }
+                        }
+                    </script>
+                </div>
+            </section>
+            <!-------poli KIA-KB----------->
+            <section class="features">
+                <div class="container">
+                    <div class="section-title">
+                        <div class="dropdown">
+                            <div><a class="link" onclick="hide_show4()"></a>
+                                <hr>
+                            </div>
+                            <div id="polikia" style="display: none;">
+                                <p class="adem"></p>
+                                <li> Periksaan kesehatan Ibu dan anak </li>
+                                <li> Pelayanan Keluarga Berencana </li>
+                                <li> Konsultasi </li>
+                                <li> ANC (Antenatal Care) </li>
+                                <li> PNC (Post Natal Care) </li>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <script>
+                        function hide_show4() {
+                            var click = document.getElementById("polikia");
+                            if (click.style.display === "none") {
+                                click.style.display = "block";
+                            } else {
+                                click.style.display = "none";
+                            }
+                        }
+                    </script>
+                </div>
+            </section>
+
+
+
+            <!--------poli gizi---------->
+            <section class="features">
+                <div class="container">
+                    <div class="section-title">
+                        <div class="dropdown">
+                            <div><a class="link" onclick="hide_show5()">Poli Gizi</a>
+                                <hr>
+                            </div>
+                            <div id="poligz" style="display: none;">
+                                <p class="adem"></p>
+                                <li> Pemeriksaan pada bayi balita serta memantau tumbuh kembang anak </li>
+                                <li> Konsultasi </li>
+                                <li> Pemberian makanan tambahan pada gizi buruk </li>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        function hide_show5() {
+                            var click = document.getElementById("poligz");
+                            if (click.style.display === "none") {
+                                click.style.display = "block";
+                            } else {
+                                click.style.display = "none";
+                            }
+                        }
+                    </script>
+                </div>
+            </section>
+        </div>
+
+        <!--------poli kesehatan lingkungan---------->
+        <section class="features">
+            <div class="container">
+                <div class="section-title">
+                    <div class="dropdown">
+                        <div><a class="link" onclick="hide_show6()">Poli Kesehatan Lingkungan</a>
+                            <hr>
+                        </div>
+                        <div id="polikl" style="display: none;">
+                            <p class="adem"></p>
+                            <li> Konsultasi klinik sanitasi </li>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    function hide_show6() {
+                        var click = document.getElementById("polikl");
+                        if (click.style.display === "none") {
+                            click.style.display = "block";
+                        } else {
+                            click.style.display = "none";
+                        }
+                    }
+                </script>
+            </div>
+        </section>
+        <!-------IGD----------->
+        <section class="features">
+            <div class="container">
+                <div class="section-title">
+                    <div class="dropdown">
+                        <div><a class="link" onclick="hide_show7()">Ruang Tindakan / IGD</a>
+                            <hr>
+                        </div>
+                        <div id="igd" style="display: none;">
+                            <p class="adem"></p>
+                            <li> Pelayanan 24 jam </li>
+                            <li> Tindakan pada pasien dengan status gawat darurat </li>
+                        </div>
+                    </div>
+
+                </div>
+                <script>
+                    function hide_show7() {
+                        var click = document.getElementById("igd");
+                        if (click.style.display === "none") {
+                            click.style.display = "block";
+                        } else {
+                            click.style.display = "none";
+                        }
+                    }
+                </script>
+            </div>
+        </section>
+        <!-------Apotek----------->
+        <section class="features">
+            <div class="container">
+                <div class="section-title">
+                    <div class="dropdown">
+                        <div><a class="link" onclick="hide_show8()">Apotek</a>
+                            <hr>
+                        </div>
+                        <div id="apotek" style="display: none;">
+                            <p class="adem"></p>
+                            <li> Pelayanan / pemberian obat – obatan </li>
+                        </div>
+                    </div>
+
+                </div>
+                <script>
+                    function hide_show8() {
+                        var click = document.getElementById("apotek");
+                        if (click.style.display === "none") {
+                            click.style.display = "block";
+                        } else {
+                            click.style.display = "none";
+                        }
+                    }
+                </script>
+            </div>
+        </section>
+        <!--------gudang obat---------->
+        <section class="features">
+            <div class="container">
+                <div class="section-title">
+                    <div class="dropdown">
+                        <div><a class="link" onclick="hide_show9()">Gudang Obat</a>
+                            <hr>
+                        </div>
+                        <div id="gudango" style="display: none;">
+                            <p class="adem"></p>
+                            <li> Distribusi obat – obatan kesemua sektor pelayanan seperti Pustu, Polindes,
+                                Poskesdes,
+                                Rawat
+                                Inap, Rawat Jalan </li>
+                            <li> Persediaan stok obat dalam waktu tertentu </li>
+                        </div>
+                    </div>
+
+                </div>
+                <script>
+                    function hide_show9() {
+                        var click = document.getElementById("gudango");
+                        if (click.style.display === "none") {
+                            click.style.display = "block";
+                        } else {
+                            click.style.display = "none";
+                        }
+                    }
+                </script>
+            </div>
+        </section>
+
+        <!------gudang inventaris----------->
+        <section class="features">
+            <div class="container">
+                <div class="section-title">
+                    <div class="dropdown">
+                        <div><a class="link" onclick="hide_show10()">Gudang Inventaris</a>
+                            <hr>
+                        </div>
+                        <div id="gudangi" style="display: none;">
+                            <p class="adem"></p>
+                            <li> Pencatatan dan pemantauan alat – alat atau bahan yang ada </li>
+                            <li> Peyimpanan stok barang yang belum digunakan </li>
+                        </div>
+                        <script>
+                            function hide_show10() {
+                                var click = document.getElementById("gudangi");
+                                if (click.style.display === "none") {
+                                    click.style.display = "block";
+                                } else {
+                                    click.style.display = "none";
+                                }
+                            }
+                        </script>
+                    </div>
+        </section>
+
+        <!-------ruang tata usaha----------->
+        <section class="features">
+            <div class="container">
+                <div class="section-title">
+                    <div class="dropdown">
+                        <div><a class="link" onclick="hide_show11()">Ruang Tata Usaha</a>
+                            <hr>
+                        </div>
+                        <div id="ruangtu" style="display: none;">
+                            <p class="adem"></p>
+                            <li> Pembuatan surat menyurat </li>
+                            <li> Pengarsipan surat masuk dan keluar </li>
+                            <li> Tata kelola dan administrasi </li>
+                        </div>
+
+                        <script>
+                            function hide_show11() {
+                                var click = document.getElementById("ruangtu");
+                                if (click.style.display === "none") {
+                                    click.style.display = "block";
+                                } else {
+                                    click.style.display = "none";
+                                }
+                            }
+                        </script>
+                    </div>
+        </section>
+
+        <!---------ruang imunisasi--------->
+        <section class="features">
+            <div class="container">
+                <div class="section-title">
+                    <div class="dropdown">
+                        <div><a class="link" onclick="hide_show12()">Ruang Imunisasi</a>
+                            <hr>
+                        </div>
+                        <div id="ruangi" style="display: none;">
+                            <p class="adem"></p>
+                            <li> Penyimpanan vaksin</li>
+                            <li> Pencatatan </li>
+                        </div>
+                    </div>
+
+                </div>
+                <script>
+                    function hide_show12() {
+                        var click = document.getElementById("ruangi");
+                        if (click.style.display === "none") {
+                            click.style.display = "block";
+                        } else {
+                            click.style.display = "none";
+                        }
+                    }
+                </script>
+            </div>
+        </section>
+
+        <!--------ruang laboratorium sederhana---------->
+        <section class="features">
+            <div class="container">
+                <div class="section-title">
+                    <div class="dropdown">
+                        <div><a class="link" onclick="hide_show13()">Ruang Laboratorium Sederhana</a>
+                            <hr>
+                        </div>
+                        <div id="ruangls" style="display: none;">
+                            <p class="adem"></p>
+                            <li> Pemeriksaan dahak</li>
+                            <li> Pemeriksaan Asam Urat </li>
+                            <li> Pemeriksaan Hemoglobin </li>
+                            <li> Pemeriksaan Cholesterol </li>
+                            <li> Pemeriksaan Gula darah </li>
+                            <li> Pemeriksan Malaria </li>
+                            <li> Golongan Darah </li>
+                        </div>
+                    </div>
+
+                </div>
+                <script>
+                    function hide_show13() {
+                        var click = document.getElementById("ruangls");
+                        if (click.style.display === "none") {
+                            click.style.display = "block";
+                        } else {
+                            click.style.display = "none";
+                        }
+                    }
+                </script>
+            </div>
+        </section>
+        <!--------ruang kepala puskesmas---------->
+        <section class="features">
+            <div class="container">
+                <div class="section-title">
+                    <div class="dropdown">
+                        <div><a class="link" onclick="hide_show14()">Ruang Kepala Puskesmas</a>
+                            <hr>
+                        </div>
+                        <div id="ruangkp" style="display: none;">
+                            <p class="adem"></p>
+                            <li> Legalitas berkas dan dokumen </li>
+                        </div>
+                    </div>
+
+                </div>
+                <script>
+                    function hide_show14() {
+                        var click = document.getElementById("ruangkp");
+                        if (click.style.display === "none") {
+                            click.style.display = "block";
+                        } else {
+                            click.style.display = "none";
+                        }
+                    }
+                </script>
+            </div>
+        </section>
+
+        <!---------ruang kepegawaian--------->
+        <section class="features">
+            <div class="container">
+                <div class="section-title">
+                    <div class="dropdown">
+                        <div><a class="link" onclick="hide_show15()">Ruang Kepegawaian</a>
+                            <hr>
+                        </div>
+                        <div id="ruangk" style="display: none;">
+                            <p class="adem"></p>
+                            <li> Pemberkasan dokumen kepegawaian </li>
+                            <li> Rekrutmen pegawai magang / kontrak </li>
+                        </div>
+                    </div>
+
+                </div>
+                <script>
+                    function hide_show15() {
+                        var click = document.getElementById("ruangk");
+                        if (click.style.display === "none") {
+                            click.style.display = "block";
+                        } else {
+                            click.style.display = "none";
+                        }
+                    }
+                </script>
+            </div>
+        </section>
+
+        <center class="section-title">
+            <h2 class="judul3 tengah"> <strong> PELAYANAN LUAR GEDUNG</strong> </h2>
+        </center>
+        <!------posyandu Balita------------>
+        <section class="features">
+            <div class="container">
+                <div class="section-title">
+                    <div class="dropdown">
+                        <div><a class="link" onclick="hide_show16()">Posyandu Balita</a>
+                            <hr>
+                        </div>
+                        <div id="posyanb" style="display: none;">
+                            <p class="adem"></p>
+                            <li> Penimbangan berat badan </li>
+                            <li> Pemberian imunisasi </li>
+                            <li> Pemantauan status imunisasi bayi balita </li>
+                        </div>
+                    </div>
+
+                </div>
+                <script>
+                    function hide_show16() {
+                        var click = document.getElementById("posyanb");
+                        if (click.style.display === "none") {
+                            click.style.display = "block";
+                        } else {
+                            click.style.display = "none";
+                        }
+                    }
+                </script>
+            </div>
+        </section>
+
+        <!--------posyandu lansia---------->
+        <section class="features">
+            <div class="container">
+                <div class="section-title">
+                    <div class="dropdown">
+                        <div><a class="link" onclick="hide_show17()">Posyandu Lansia</a>
+                            <hr>
+                        </div>
+                        <div id="posyanl" style="display: none;">
+                            <p class="adem"></p>
+                            <li> Pemeriksaan fisik </li>
+                            <li> Pemberian obat – obatan </li>
+                            <li> Konsultasi </li>
+                        </div>
+                    </div>
+
+                </div>
+                <script>
+                    function hide_show17() {
+                        var click = document.getElementById("posyanl");
+                        if (click.style.display === "none") {
+                            click.style.display = "block";
+                        } else {
+                            click.style.display = "none";
+                        }
+                    }
+                </script>
+            </div>
+        </section>
+
+        <!-------promosi kesehatan----------->
+        <section class="features">
+            <div class="container">
+                <div class="section-title">
+                    <div class="dropdown">
+                        <div><a class="link" onclick="hide_show18()">Promosi Kesehatan</a>
+                            <hr>
+                        </div>
+                        <div id="promosik" style="display: none;">
+                            <p class="adem"></p>
+                            <li> Penyuluhan di desa – desa </li>
+                        </div>
+                    </div>
+
+                </div>
+                <script>
+                    function hide_show18() {
+                        var click = document.getElementById("promosik");
+                        if (click.style.display === "none") {
+                            click.style.display = "block";
+                        } else {
+                            click.style.display = "none";
+                        }
+                    }
+                </script>
+            </div>
+        </section>
+        <!---------kesehatan lingkungan--------->
+        <section class="features">
+            <div class="container">
+                <div class="section-title">
+                    <div class="dropdown">
+                        <div><a class="link" onclick="hide_show19()">Kesehatan Lingkungan</a>
+                            <hr>
+                        </div>
+                        <div id="kesehatanl" style="display: none;">
+                            <p class="adem"></p>
+                            <li> Surveilan lapangan tentang Perilaku Hidup Bersih dan Sehat ( PHBS )
+                            </li>
+                            <li> Kunjungan dari rumah kerumah </li>
+                            <li> Pemantauan keadaan lingkungan </li>
+                            <li> Penyuluhan kesehatan lingkungan dan PHBS </li>
+                            <li> Pengawasan SPAL (saluran pembuangan air limbah),SAMI-JAGA (sumber air
+                                minum-jamban keluarga), TTU (tempat umum), Institusi </li>
+                            <li> Survey Jentik Nyamuk </li>
+                            <li> Fogging </li>
+                            <li> Penyemprotan insektisida malaria </li>
+                        </div>
+                    </div>
+
+                </div>
+                <script>
+                    function hide_show19() {
+                        var click = document.getElementById("kesehatanl");
+                        if (click.style.display === "none") {
+                            click.style.display = "block";
+                        } else {
+                            click.style.display = "none";
+                        }
+                    }
+                </script>
+            </div>
+        </section>
+        <!--------pelayanan Ambulan---------->
+        <section class="features">
+            <div class="container">
+                <div class="section-title">
+                    <div class="dropdown">
+                        <div><a class="link" onclick="hide_show20()">Pelayanan Ambulan</a>
+                            <hr>
+                        </div>
+                        <div id="pelayana" style="display: none;">
+                            <p class="adem"></p>
+                            <li> Rujukan pasien </li>
+                            <li> Puskesmas keliling </li>
+                        </div>
+                    </div>
+
+                </div>
+                <script>
+                    function hide_show20() {
+                        var click = document.getElementById("pelayana");
+                        if (click.style.display === "none") {
+                            click.style.display = "block";
+                        } else {
+                            click.style.display = "none";
+                        }
+                    }
+                </script>
+            </div>
+        </section>
+
+        <div class="back">
+            <center class="huruf rata">
+                <p> Dalam perkembangannya nanti tidak menutup kemungkinan bahwa pelayanan
+                    Puskesmas akan menambah jenis - jenis pelayanan yang ada, dimana kebutuhan
+                    akan pelayanan kesehatan semakin diperlukan oleh masyarakat.</P>
+            </center>
+
+        </div>
+        <!-- ======= Footer ======= -->
+        <footer id="footer" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-3 col-md-6 footer-links">
+                            <h4>Useful Links</h4>
+                            <ul>
+                                <li> <a href="index.html">Home</a></li>
+                                <li> <a href="Aboutus.html">About Us</a></li>
+                                <li><a href="kontak.html">Contact Us</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-3 col-md-6 footer-contact">
+                            <h4>Contact Us</h4>
+                            <p>
+                                Puskesmas <br>
+                                Daerah Istimewa Yogyakarta<br>
+                                Indonesia <br><br>
+                                <strong>Phone:</strong> 021-345-678<br>
+                                <strong>Email:</strong> Puskesmas@contoh.com<br>
+                            </p>
+
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 footer-info">
+                            <h3>About PUSKESMAS</h3>
+                            <p>suatu unit pelaksana fungsional yang berfungsi sebagai pusat pembangunan kesehatan,
+                                pusat
+                                pembinaan peran serta masyarakat dalam bidang kesehatan serta pusat pelayanan
+                                kesehatan
+                                tingkat pertama yang menyelenggarakan kegiatannya secara menyeluruh, terpadu yang
+                                berkesinambungan pada suatu masyarakat</p>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="container">
+                <div class="copyright">
+                    &copy; Copyright <strong><span>Adem</span></strong>. All Rights Reserved
+                </div>
+                <div class="credits">
+
+                    Designed by <a href="aboutus.html">Dicky Ade Mahendra</a>
+                </div>
+            </div>
+        </footer><!-- End Footer -->
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery.easing.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/custom.js"></script>
+        <script src="contactform/contactform.js"></script>
+    </section>
+
+</body>
