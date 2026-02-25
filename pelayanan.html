@@ -1,785 +1,994 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
-    <title>Pelayanan</title>
+    <title>Pelayanan - Puskesmas</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width-device-width,initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jenis Pelayanan Puskesmas - Poli Umum, Poli Gigi, KIA-KB, Gizi, Laboratorium, IGD 24 jam">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Candal">
     <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style2.css">
-    <link href="/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="css/boxicons.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* Pelayanan Page Specific Styles */
+        .pelayanan-hero {
+            background: linear-gradient(135deg, rgba(12, 184, 182, 0.95) 0%, rgba(104, 164, 196, 0.95) 100%);
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .pelayanan-hero h1 {
+            color: #fff;
+            font-size: 48px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin: 0 0 15px 0;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .pelayanan-hero p {
+            color: #fff;
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin: 60px 0 40px;
+        }
+
+        .section-header h2 {
+            color: #0073e6;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .section-header .divider {
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #0CB8B6, #68A4C4);
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+
+        .service-category {
+            margin-bottom: 60px;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(12, 184, 182, 0.3);
+        }
+
+        .service-card.active {
+            box-shadow: 0 10px 30px rgba(12, 184, 182, 0.4);
+            border: 2px solid #0CB8B6;
+        }
+
+        .service-card .card-header {
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(12, 184, 182, 0.05), rgba(104, 164, 196, 0.05));
+            border-bottom: 1px solid #eee;
+        }
+
+        .service-card .icon-box {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .service-card .icon-box.teal {
+            background: linear-gradient(135deg, #0CB8B6, #1dd8c7);
+        }
+
+        .service-card .icon-box.blue {
+            background: linear-gradient(135deg, #68A4C4, #7fb8d6);
+        }
+
+        .service-card .icon-box.orange {
+            background: linear-gradient(135deg, #ff9f43, #ffb166);
+        }
+
+        .service-card .icon-box.green {
+            background: linear-gradient(135deg, #10ac84, #2ecc9b);
+        }
+
+        .service-card .icon-box i {
+            color: #fff;
+            font-size: 26px;
+        }
+
+        .service-card .card-header h3 {
+            color: #0073e6;
+            font-size: 18px;
+            font-weight: 600;
+            margin: 0;
+            flex: 1;
+        }
+
+        .service-card .card-header .toggle-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0CB8B6, #68A4C4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card.active .toggle-icon {
+            transform: rotate(45deg);
+        }
+
+        .service-card .toggle-icon i {
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .service-card .card-body {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .service-card.active .card-body {
+            padding: 25px;
+            max-height: 500px;
+        }
+
+        .service-card .card-body ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .service-card .card-body ul li {
+            color: #555;
+            font-size: 15px;
+            line-height: 2;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .service-card .card-body ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #0CB8B6;
+            font-weight: 700;
+        }
+
+        .service-card .card-body p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        /* Info Banner */
+        .info-banner {
+            background: linear-gradient(135deg, #f3f8fa 0%, #e8f4f8 100%);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .info-banner p {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        .info-banner i {
+            color: #0CB8B6;
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, rgba(12, 184, 182, 0.9) 0%, rgba(104, 164, 196, 0.9) 100%);
+            padding: 50px 0;
+            margin-top: 60px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .cta-section h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .cta-section p {
+            font-size: 16px;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: #fff;
+            color: #0CB8B6;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            background: #0CB8B6;
+            color: #fff;
+            transform: scale(1.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .pelayanan-hero h1 {
+                font-size: 32px;
+            }
+
+            .pelayanan-hero p {
+                font-size: 14px;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header h2 {
+                font-size: 28px;
+            }
+        }
+
+        /* Modern Footer Styles */
+        .modern-footer {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #fff;
+            padding-top: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modern-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #0CB8B6, #68A4C4, #0CB8B6);
+            background-size: 200% 100%;
+            animation: gradientMove 3s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .footer-widget {
+            margin-bottom: 40px;
+        }
+
+        .footer-widget h4 {
+            color: #0CB8B6;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .footer-widget h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #0CB8B6, #68A4C4);
+        }
+
+        .footer-widget h3 {
+            color: #0CB8B6;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .footer-links ul li a:hover {
+            color: #0CB8B6;
+            padding-left: 10px;
+        }
+
+        .footer-links ul li a i {
+            margin-right: 10px;
+            font-size: 12px;
+            color: #0CB8B6;
+        }
+
+        .footer-contact p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+            line-height: 2;
+            margin-bottom: 15px;
+        }
+
+        .footer-contact p i {
+            color: #0CB8B6;
+            margin-right: 10px;
+            width: 20px;
+        }
+
+        .footer-contact p strong {
+            color: #fff;
+        }
+
+        .footer-info p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .footer-social {
+            margin-top: 20px;
+        }
+
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(12, 184, 182, 0.2);
+            color: #0CB8B6;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .footer-social a:hover {
+            background: linear-gradient(135deg, #0CB8B6, #68A4C4);
+            color: #fff;
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 25px 0;
+            margin-top: 40px;
+        }
+
+        .footer-bottom .copyright {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .footer-bottom .credits {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 13px;
+            margin: 10px 0 0 0;
+        }
+
+        .footer-bottom .credits a {
+            color: #0CB8B6;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom .credits a:hover {
+            color: #68A4C4;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0CB8B6, #68A4C4);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            text-decoration: none;
+            box-shadow: 0 5px 20px rgba(12, 184, 182, 0.4);
+            transition: all 0.3s ease;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(12, 184, 182, 0.6);
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .modern-footer {
+                padding-top: 40px;
+            }
+
+            .footer-widget {
+                margin-bottom: 30px;
+                text-align: center;
+            }
+
+            .footer-widget h4::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .footer-links ul li a {
+                justify-content: center;
+            }
+
+            .footer-social {
+                text-align: center;
+            }
+
+            .footer-bottom .copyright,
+            .footer-bottom .credits {
+                text-align: center;
+            }
+        }
+    </style>
 </head>
-<style>
-    li {
-        color: black;
-    }
-
-    h1 {
-        font-size: 35px;
-    }
-
-    .tengah {
-        text-align: center;
-    }
-
-    .rata {
-        text-align: justify;
-    }
-
-    .section-title {
-        text-align: left;
-        padding-bottom: 20px;
-        padding-top: 20px;
-    }
-
-    .section-title h2 {
-        font-size: 28px;
-        font-weight: 400;
-        margin-bottom: 20px;
-        padding-top: 30px;
-        padding-bottom: 20px;
-        position: relative;
-    }
-
-    .section-title h2::before {
-        content: '';
-        position: absolute;
-        display: block;
-        width: 120px;
-        height: 1px;
-        background: rgb(24, 23, 23);
-        bottom: 1px;
-        left: calc(50% - 60px);
-    }
-
-    .section-title h2::after {
-        content: '';
-        position: absolute;
-        display: block;
-        width: 40px;
-        height: 3px;
-        background: #f00bbe;
-        bottom: 0;
-        left: calc(50% - 20px);
-
-    }
-</style>
 
 <body>
-    <!--banner-->
-    <section id="fasi" class="banner">
-        <div class="fasili">
-            <nav class="navbar navbar-default navbar-fixed-top">
-                <div class="container">
-                    <div class="col-md-12">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            <a class="text" href="index.html">
-                                PUSKESMAS
-                            </a>
-                        </div>
-                        <div class="collapse navbar-collapse navbar-right" id="myNavbar">
-                            <ul class="nav navbar-nav">
-                                <li class=""><a href="index.html">Home</a></li>
-                                <li class=""><a href="Aboutus.html">About Us</a></li>
-                                <li class=""><a href="kontak.html">Contact Us</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-            <div class="atap">
-
-            </div>
-            <div class="back">
-                <center class="section-title">
-                    <h1 class="judul3 tengah "> <strong> JENIS JENIS PELAYANAN </strong> </h1>
-                </center>
-                <center>
-                    <p class="huruf rata"> Dalam memberikan pelayanan Puskesmas, kami telah
-                        menyediakan jenis - jenis
-                        pelayanan
-                        yang dapat
-                        diakses dan
-                        diberikan kepada masyarakat. Jenis - jenis pelayanan tersebut adalah sebagai berikut : </p>
-                </center>
-
-            </div>
-
-
-            <center class="section-title">
-                <h2 class="judul3 tengah"> <strong> PELAYANAN DALAM GEDUNG</strong> </h2>
-            </center>
-
-
-            <!--------loket pendaftaran---------->
-            <section class="features">
-                <div class="container">
-                    <div class="section-title">
-                        <div class="dropdown">
-                            <div><a class="link" onclick="hide_show1()">Loket Pendaftaran</a>
-                                <hr>
-                            </div>
-                            <div id="loketp" style="display: none;">
-                                <p class="adem"></p>
-                                <li> Pendaftaran pasien </li>
-                                <li> Pencatatan / rekam medis </li>
-                            </div>
-                        </div>
-
-                    </div>
-                    <script>
-                        function hide_show1() {
-                            var click = document.getElementById("loketp");
-                            if (click.style.display === "none") {
-                                click.style.display = "block";
-                            } else {
-                                click.style.display = "none";
-                            }
-                        }
-                    </script>
-                </div>
-            </section>
-
-            <!---------poli umum--------->
-            <section class="features">
-                <div class="container">
-                    <div class="section-title">
-                        <div class="dropdown">
-                            <div><a class="link" onclick="hide_show2()">Poli Umum</a>
-                                <hr>
-                            </div>
-                            <div id="poliu" style="display: none;">
-                                <p class="adem"></p>
-                                <li> Pemeriksaan awal terhadap pasien </li>
-                                <li> Pemberian resep oleh dokter </li>
-                                <li> Konsultasi </li>
-                            </div>
-                        </div>
-                    </div>
-                    <script>
-                        function hide_show2() {
-                            var click = document.getElementById("poliu");
-                            if (click.style.display === "none") {
-                                click.style.display = "block";
-                            } else {
-                                click.style.display = "none";
-                            }
-                        }
-                    </script>
-                </div>
-            </section>
-
-
-
-            <!--------poli gigi---------->
-            <section class="features">
-                <div class="container">
-                    <div class="section-title">
-                        <div class="dropdown">
-                            <div><a class="link" onclick="hide_show3()">Poli Gigi</a>
-                                <hr>
-                            </div>
-                            <div id="polig" style="display: none;">
-                                <p class="adem"></p>
-                                <li> Pemeriksaan gigi </li>
-                                <li> Penambalan gigi </li>
-                                <li> Pencabutan gigi </li>
-                                <li> Konsultasi </li>
-                            </div>
-                        </div>
-                    </div>
-                    <script>
-                        function hide_show3() {
-                            var click = document.getElementById("polig");
-                            if (click.style.display === "none") {
-                                click.style.display = "block";
-                            } else {
-                                click.style.display = "none";
-                            }
-                        }
-                    </script>
-                </div>
-            </section>
-            <!-------poli KIA-KB----------->
-            <section class="features">
-                <div class="container">
-                    <div class="section-title">
-                        <div class="dropdown">
-                            <div><a class="link" onclick="hide_show4()"></a>
-                                <hr>
-                            </div>
-                            <div id="polikia" style="display: none;">
-                                <p class="adem"></p>
-                                <li> Periksaan kesehatan Ibu dan anak </li>
-                                <li> Pelayanan Keluarga Berencana </li>
-                                <li> Konsultasi </li>
-                                <li> ANC (Antenatal Care) </li>
-                                <li> PNC (Post Natal Care) </li>
-
-                            </div>
-                        </div>
-
-                    </div>
-                    <script>
-                        function hide_show4() {
-                            var click = document.getElementById("polikia");
-                            if (click.style.display === "none") {
-                                click.style.display = "block";
-                            } else {
-                                click.style.display = "none";
-                            }
-                        }
-                    </script>
-                </div>
-            </section>
-
-
-
-            <!--------poli gizi---------->
-            <section class="features">
-                <div class="container">
-                    <div class="section-title">
-                        <div class="dropdown">
-                            <div><a class="link" onclick="hide_show5()">Poli Gizi</a>
-                                <hr>
-                            </div>
-                            <div id="poligz" style="display: none;">
-                                <p class="adem"></p>
-                                <li> Pemeriksaan pada bayi balita serta memantau tumbuh kembang anak </li>
-                                <li> Konsultasi </li>
-                                <li> Pemberian makanan tambahan pada gizi buruk </li>
-                            </div>
-                        </div>
-                    </div>
-                    <script>
-                        function hide_show5() {
-                            var click = document.getElementById("poligz");
-                            if (click.style.display === "none") {
-                                click.style.display = "block";
-                            } else {
-                                click.style.display = "none";
-                            }
-                        }
-                    </script>
-                </div>
-            </section>
+    <!-- Hero Section -->
+    <section class="pelayanan-hero">
+        <div data-aos="fade-down" data-aos-duration="800">
+            <h1><i class="fa fa-heartbeat"></i> Pelayanan Kami</h1>
+            <p>Layanan kesehatan komprehensif untuk masyarakat yang lebih sehat</p>
         </div>
-
-        <!--------poli kesehatan lingkungan---------->
-        <section class="features">
-            <div class="container">
-                <div class="section-title">
-                    <div class="dropdown">
-                        <div><a class="link" onclick="hide_show6()">Poli Kesehatan Lingkungan</a>
-                            <hr>
-                        </div>
-                        <div id="polikl" style="display: none;">
-                            <p class="adem"></p>
-                            <li> Konsultasi klinik sanitasi </li>
-                        </div>
-                    </div>
-                </div>
-                <script>
-                    function hide_show6() {
-                        var click = document.getElementById("polikl");
-                        if (click.style.display === "none") {
-                            click.style.display = "block";
-                        } else {
-                            click.style.display = "none";
-                        }
-                    }
-                </script>
-            </div>
-        </section>
-        <!-------IGD----------->
-        <section class="features">
-            <div class="container">
-                <div class="section-title">
-                    <div class="dropdown">
-                        <div><a class="link" onclick="hide_show7()">Ruang Tindakan / IGD</a>
-                            <hr>
-                        </div>
-                        <div id="igd" style="display: none;">
-                            <p class="adem"></p>
-                            <li> Pelayanan 24 jam </li>
-                            <li> Tindakan pada pasien dengan status gawat darurat </li>
-                        </div>
-                    </div>
-
-                </div>
-                <script>
-                    function hide_show7() {
-                        var click = document.getElementById("igd");
-                        if (click.style.display === "none") {
-                            click.style.display = "block";
-                        } else {
-                            click.style.display = "none";
-                        }
-                    }
-                </script>
-            </div>
-        </section>
-        <!-------Apotek----------->
-        <section class="features">
-            <div class="container">
-                <div class="section-title">
-                    <div class="dropdown">
-                        <div><a class="link" onclick="hide_show8()">Apotek</a>
-                            <hr>
-                        </div>
-                        <div id="apotek" style="display: none;">
-                            <p class="adem"></p>
-                            <li> Pelayanan / pemberian obat – obatan </li>
-                        </div>
-                    </div>
-
-                </div>
-                <script>
-                    function hide_show8() {
-                        var click = document.getElementById("apotek");
-                        if (click.style.display === "none") {
-                            click.style.display = "block";
-                        } else {
-                            click.style.display = "none";
-                        }
-                    }
-                </script>
-            </div>
-        </section>
-        <!--------gudang obat---------->
-        <section class="features">
-            <div class="container">
-                <div class="section-title">
-                    <div class="dropdown">
-                        <div><a class="link" onclick="hide_show9()">Gudang Obat</a>
-                            <hr>
-                        </div>
-                        <div id="gudango" style="display: none;">
-                            <p class="adem"></p>
-                            <li> Distribusi obat – obatan kesemua sektor pelayanan seperti Pustu, Polindes,
-                                Poskesdes,
-                                Rawat
-                                Inap, Rawat Jalan </li>
-                            <li> Persediaan stok obat dalam waktu tertentu </li>
-                        </div>
-                    </div>
-
-                </div>
-                <script>
-                    function hide_show9() {
-                        var click = document.getElementById("gudango");
-                        if (click.style.display === "none") {
-                            click.style.display = "block";
-                        } else {
-                            click.style.display = "none";
-                        }
-                    }
-                </script>
-            </div>
-        </section>
-
-        <!------gudang inventaris----------->
-        <section class="features">
-            <div class="container">
-                <div class="section-title">
-                    <div class="dropdown">
-                        <div><a class="link" onclick="hide_show10()">Gudang Inventaris</a>
-                            <hr>
-                        </div>
-                        <div id="gudangi" style="display: none;">
-                            <p class="adem"></p>
-                            <li> Pencatatan dan pemantauan alat – alat atau bahan yang ada </li>
-                            <li> Peyimpanan stok barang yang belum digunakan </li>
-                        </div>
-                        <script>
-                            function hide_show10() {
-                                var click = document.getElementById("gudangi");
-                                if (click.style.display === "none") {
-                                    click.style.display = "block";
-                                } else {
-                                    click.style.display = "none";
-                                }
-                            }
-                        </script>
-                    </div>
-        </section>
-
-        <!-------ruang tata usaha----------->
-        <section class="features">
-            <div class="container">
-                <div class="section-title">
-                    <div class="dropdown">
-                        <div><a class="link" onclick="hide_show11()">Ruang Tata Usaha</a>
-                            <hr>
-                        </div>
-                        <div id="ruangtu" style="display: none;">
-                            <p class="adem"></p>
-                            <li> Pembuatan surat menyurat </li>
-                            <li> Pengarsipan surat masuk dan keluar </li>
-                            <li> Tata kelola dan administrasi </li>
-                        </div>
-
-                        <script>
-                            function hide_show11() {
-                                var click = document.getElementById("ruangtu");
-                                if (click.style.display === "none") {
-                                    click.style.display = "block";
-                                } else {
-                                    click.style.display = "none";
-                                }
-                            }
-                        </script>
-                    </div>
-        </section>
-
-        <!---------ruang imunisasi--------->
-        <section class="features">
-            <div class="container">
-                <div class="section-title">
-                    <div class="dropdown">
-                        <div><a class="link" onclick="hide_show12()">Ruang Imunisasi</a>
-                            <hr>
-                        </div>
-                        <div id="ruangi" style="display: none;">
-                            <p class="adem"></p>
-                            <li> Penyimpanan vaksin</li>
-                            <li> Pencatatan </li>
-                        </div>
-                    </div>
-
-                </div>
-                <script>
-                    function hide_show12() {
-                        var click = document.getElementById("ruangi");
-                        if (click.style.display === "none") {
-                            click.style.display = "block";
-                        } else {
-                            click.style.display = "none";
-                        }
-                    }
-                </script>
-            </div>
-        </section>
-
-        <!--------ruang laboratorium sederhana---------->
-        <section class="features">
-            <div class="container">
-                <div class="section-title">
-                    <div class="dropdown">
-                        <div><a class="link" onclick="hide_show13()">Ruang Laboratorium Sederhana</a>
-                            <hr>
-                        </div>
-                        <div id="ruangls" style="display: none;">
-                            <p class="adem"></p>
-                            <li> Pemeriksaan dahak</li>
-                            <li> Pemeriksaan Asam Urat </li>
-                            <li> Pemeriksaan Hemoglobin </li>
-                            <li> Pemeriksaan Cholesterol </li>
-                            <li> Pemeriksaan Gula darah </li>
-                            <li> Pemeriksan Malaria </li>
-                            <li> Golongan Darah </li>
-                        </div>
-                    </div>
-
-                </div>
-                <script>
-                    function hide_show13() {
-                        var click = document.getElementById("ruangls");
-                        if (click.style.display === "none") {
-                            click.style.display = "block";
-                        } else {
-                            click.style.display = "none";
-                        }
-                    }
-                </script>
-            </div>
-        </section>
-        <!--------ruang kepala puskesmas---------->
-        <section class="features">
-            <div class="container">
-                <div class="section-title">
-                    <div class="dropdown">
-                        <div><a class="link" onclick="hide_show14()">Ruang Kepala Puskesmas</a>
-                            <hr>
-                        </div>
-                        <div id="ruangkp" style="display: none;">
-                            <p class="adem"></p>
-                            <li> Legalitas berkas dan dokumen </li>
-                        </div>
-                    </div>
-
-                </div>
-                <script>
-                    function hide_show14() {
-                        var click = document.getElementById("ruangkp");
-                        if (click.style.display === "none") {
-                            click.style.display = "block";
-                        } else {
-                            click.style.display = "none";
-                        }
-                    }
-                </script>
-            </div>
-        </section>
-
-        <!---------ruang kepegawaian--------->
-        <section class="features">
-            <div class="container">
-                <div class="section-title">
-                    <div class="dropdown">
-                        <div><a class="link" onclick="hide_show15()">Ruang Kepegawaian</a>
-                            <hr>
-                        </div>
-                        <div id="ruangk" style="display: none;">
-                            <p class="adem"></p>
-                            <li> Pemberkasan dokumen kepegawaian </li>
-                            <li> Rekrutmen pegawai magang / kontrak </li>
-                        </div>
-                    </div>
-
-                </div>
-                <script>
-                    function hide_show15() {
-                        var click = document.getElementById("ruangk");
-                        if (click.style.display === "none") {
-                            click.style.display = "block";
-                        } else {
-                            click.style.display = "none";
-                        }
-                    }
-                </script>
-            </div>
-        </section>
-
-        <center class="section-title">
-            <h2 class="judul3 tengah"> <strong> PELAYANAN LUAR GEDUNG</strong> </h2>
-        </center>
-        <!------posyandu Balita------------>
-        <section class="features">
-            <div class="container">
-                <div class="section-title">
-                    <div class="dropdown">
-                        <div><a class="link" onclick="hide_show16()">Posyandu Balita</a>
-                            <hr>
-                        </div>
-                        <div id="posyanb" style="display: none;">
-                            <p class="adem"></p>
-                            <li> Penimbangan berat badan </li>
-                            <li> Pemberian imunisasi </li>
-                            <li> Pemantauan status imunisasi bayi balita </li>
-                        </div>
-                    </div>
-
-                </div>
-                <script>
-                    function hide_show16() {
-                        var click = document.getElementById("posyanb");
-                        if (click.style.display === "none") {
-                            click.style.display = "block";
-                        } else {
-                            click.style.display = "none";
-                        }
-                    }
-                </script>
-            </div>
-        </section>
-
-        <!--------posyandu lansia---------->
-        <section class="features">
-            <div class="container">
-                <div class="section-title">
-                    <div class="dropdown">
-                        <div><a class="link" onclick="hide_show17()">Posyandu Lansia</a>
-                            <hr>
-                        </div>
-                        <div id="posyanl" style="display: none;">
-                            <p class="adem"></p>
-                            <li> Pemeriksaan fisik </li>
-                            <li> Pemberian obat – obatan </li>
-                            <li> Konsultasi </li>
-                        </div>
-                    </div>
-
-                </div>
-                <script>
-                    function hide_show17() {
-                        var click = document.getElementById("posyanl");
-                        if (click.style.display === "none") {
-                            click.style.display = "block";
-                        } else {
-                            click.style.display = "none";
-                        }
-                    }
-                </script>
-            </div>
-        </section>
-
-        <!-------promosi kesehatan----------->
-        <section class="features">
-            <div class="container">
-                <div class="section-title">
-                    <div class="dropdown">
-                        <div><a class="link" onclick="hide_show18()">Promosi Kesehatan</a>
-                            <hr>
-                        </div>
-                        <div id="promosik" style="display: none;">
-                            <p class="adem"></p>
-                            <li> Penyuluhan di desa – desa </li>
-                        </div>
-                    </div>
-
-                </div>
-                <script>
-                    function hide_show18() {
-                        var click = document.getElementById("promosik");
-                        if (click.style.display === "none") {
-                            click.style.display = "block";
-                        } else {
-                            click.style.display = "none";
-                        }
-                    }
-                </script>
-            </div>
-        </section>
-        <!---------kesehatan lingkungan--------->
-        <section class="features">
-            <div class="container">
-                <div class="section-title">
-                    <div class="dropdown">
-                        <div><a class="link" onclick="hide_show19()">Kesehatan Lingkungan</a>
-                            <hr>
-                        </div>
-                        <div id="kesehatanl" style="display: none;">
-                            <p class="adem"></p>
-                            <li> Surveilan lapangan tentang Perilaku Hidup Bersih dan Sehat ( PHBS )
-                            </li>
-                            <li> Kunjungan dari rumah kerumah </li>
-                            <li> Pemantauan keadaan lingkungan </li>
-                            <li> Penyuluhan kesehatan lingkungan dan PHBS </li>
-                            <li> Pengawasan SPAL (saluran pembuangan air limbah),SAMI-JAGA (sumber air
-                                minum-jamban keluarga), TTU (tempat umum), Institusi </li>
-                            <li> Survey Jentik Nyamuk </li>
-                            <li> Fogging </li>
-                            <li> Penyemprotan insektisida malaria </li>
-                        </div>
-                    </div>
-
-                </div>
-                <script>
-                    function hide_show19() {
-                        var click = document.getElementById("kesehatanl");
-                        if (click.style.display === "none") {
-                            click.style.display = "block";
-                        } else {
-                            click.style.display = "none";
-                        }
-                    }
-                </script>
-            </div>
-        </section>
-        <!--------pelayanan Ambulan---------->
-        <section class="features">
-            <div class="container">
-                <div class="section-title">
-                    <div class="dropdown">
-                        <div><a class="link" onclick="hide_show20()">Pelayanan Ambulan</a>
-                            <hr>
-                        </div>
-                        <div id="pelayana" style="display: none;">
-                            <p class="adem"></p>
-                            <li> Rujukan pasien </li>
-                            <li> Puskesmas keliling </li>
-                        </div>
-                    </div>
-
-                </div>
-                <script>
-                    function hide_show20() {
-                        var click = document.getElementById("pelayana");
-                        if (click.style.display === "none") {
-                            click.style.display = "block";
-                        } else {
-                            click.style.display = "none";
-                        }
-                    }
-                </script>
-            </div>
-        </section>
-
-        <div class="back">
-            <center class="huruf rata">
-                <p> Dalam perkembangannya nanti tidak menutup kemungkinan bahwa pelayanan
-                    Puskesmas akan menambah jenis - jenis pelayanan yang ada, dimana kebutuhan
-                    akan pelayanan kesehatan semakin diperlukan oleh masyarakat.</P>
-            </center>
-
-        </div>
-        <!-- ======= Footer ======= -->
-        <footer id="footer" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
-
-            <div class="footer-top">
-                <div class="container">
-                    <div class="row">
-
-                        <div class="col-lg-3 col-md-6 footer-links">
-                            <h4>Useful Links</h4>
-                            <ul>
-                                <li> <a href="index.html">Home</a></li>
-                                <li> <a href="Aboutus.html">About Us</a></li>
-                                <li><a href="kontak.html">Contact Us</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-3 col-md-6 footer-contact">
-                            <h4>Contact Us</h4>
-                            <p>
-                                Puskesmas <br>
-                                Daerah Istimewa Yogyakarta<br>
-                                Indonesia <br><br>
-                                <strong>Phone:</strong> 021-345-678<br>
-                                <strong>Email:</strong> Puskesmas@contoh.com<br>
-                            </p>
-
-                        </div>
-
-                        <div class="col-lg-3 col-md-6 footer-info">
-                            <h3>About PUSKESMAS</h3>
-                            <p>suatu unit pelaksana fungsional yang berfungsi sebagai pusat pembangunan kesehatan,
-                                pusat
-                                pembinaan peran serta masyarakat dalam bidang kesehatan serta pusat pelayanan
-                                kesehatan
-                                tingkat pertama yang menyelenggarakan kegiatannya secara menyeluruh, terpadu yang
-                                berkesinambungan pada suatu masyarakat</p>
-
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            
-            <div class="container">
-                <div class="copyright">
-                    &copy; Copyright <strong><span>Adem</span></strong>. All Rights Reserved
-                </div>
-                <div class="credits">
-
-                    Designed by <a href="aboutus.html">Dicky Ade Mahendra</a>
-                </div>
-            </div>
-        </footer><!-- End Footer -->
-        <script src="js/jquery.min.js"></script>
-        <script src="js/jquery.easing.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/custom.js"></script>
-        <script src="contactform/contactform.js"></script>
     </section>
 
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Info Banner -->
+        <div class="info-banner" data-aos="fade-up">
+            <p><i class="fa fa-info-circle"></i> Dalam memberikan pelayanan, Puskesmas menyediakan berbagai jenis 
+            layanan yang dapat diakses dan diberikan kepada masyarakat dengan standar pelayanan yang optimal.</p>
+        </div>
+
+        <!-- Pelayanan Dalam Gedung -->
+        <div class="service-category">
+            <div class="section-header" data-aos="fade-up">
+                <h2><i class="fa fa-hospital-o"></i> Pelayanan Dalam Gedung</h2>
+                <div class="divider"></div>
+            </div>
+
+            <div class="service-grid">
+                <!-- Loket Pendaftaran -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100" onclick="toggleService(this)">
+                    <div class="card-header">
+                        <div class="icon-box teal">
+                            <i class="fa fa-ticket"></i>
+                        </div>
+                        <h3>Loket Pendaftaran</h3>
+                        <div class="toggle-icon">
+                            <i class="fa fa-plus"></i>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Pendaftaran pasien baru dan lama</li>
+                            <li>Pencatatan / rekam medis elektronik</li>
+                            <li>Penerbitan kartu berobat</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Poli Umum -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="150" onclick="toggleService(this)">
+                    <div class="card-header">
+                        <div class="icon-box blue">
+                            <i class="fa fa-stethoscope"></i>
+                        </div>
+                        <h3>Poli Umum</h3>
+                        <div class="toggle-icon">
+                            <i class="fa fa-plus"></i>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Pemeriksaan awal terhadap pasien</li>
+                            <li>Pemberian resep oleh dokter</li>
+                            <li>Konsultasi kesehatan umum</li>
+                            <li>Pengobatan penyakit ringan dan kronis</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Poli Gigi -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200" onclick="toggleService(this)">
+                    <div class="card-header">
+                        <div class="icon-box orange">
+                            <i class="fa fa-smile-o"></i>
+                        </div>
+                        <h3>Poli Gigi</h3>
+                        <div class="toggle-icon">
+                            <i class="fa fa-plus"></i>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Pemeriksaan kesehatan gigi</li>
+                            <li>Penambalan gigi (tambal)</li>
+                            <li>Pencabutan gigi</li>
+                            <li>Pembersihan karang gigi</li>
+                            <li>Konsultasi kesehatan mulut</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Poli KIA-KB -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="250" onclick="toggleService(this)">
+                    <div class="card-header">
+                        <div class="icon-box teal">
+                            <i class="fa fa-heartbeat"></i>
+                        </div>
+                        <h3>Poli KIA-KB</h3>
+                        <div class="toggle-icon">
+                            <i class="fa fa-plus"></i>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Pemeriksaan kesehatan Ibu dan Anak</li>
+                            <li>Pelayanan Keluarga Berencana</li>
+                            <li>Konsultasi kehamilan</li>
+                            <li>ANC (Antenatal Care)</li>
+                            <li>PNC (Post Natal Care)</li>
+                            <li>Imunisasi bayi dan balita</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Poli Gizi -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300" onclick="toggleService(this)">
+                    <div class="card-header">
+                        <div class="icon-box green">
+                            <i class="fa fa-apple"></i>
+                        </div>
+                        <h3>Poli Gizi</h3>
+                        <div class="toggle-icon">
+                            <i class="fa fa-plus"></i>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Pemeriksaan status gizi</li>
+                            <li>Pemantauan tumbuh kembang anak</li>
+                            <li>Konsultasi gizi perorangan</li>
+                            <li>Pemberian makanan tambahan</li>
+                            <li>Edukasi gizi seimbang</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- IGD 24 Jam -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="350" onclick="toggleService(this)">
+                    <div class="card-header">
+                        <div class="icon-box orange">
+                            <i class="fa fa-ambulance"></i>
+                        </div>
+                        <h3>IGD 24 Jam</h3>
+                        <div class="toggle-icon">
+                            <i class="fa fa-plus"></i>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Pelayanan gawat darurat 24/7</li>
+                            <li>Tindakan emergency</li>
+                            <li>Stabilisasi pasien kritis</li>
+                            <li>Rujukan ke rumah sakit</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apotek -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400" onclick="toggleService(this)">
+                    <div class="card-header">
+                        <div class="icon-box blue">
+                            <i class="fa fa-medkit"></i>
+                        </div>
+                        <h3>Apotek</h3>
+                        <div class="toggle-icon">
+                            <i class="fa fa-plus"></i>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Pelayanan obat-obatan resep</li>
+                            <li>Konsultasi penggunaan obat</li>
+                            <li>Informasi efek samping obat</li>
+                            <li>Penyediaan obat generik</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Laboratorium -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="450" onclick="toggleService(this)">
+                    <div class="card-header">
+                        <div class="icon-box teal">
+                            <i class="fa fa-flask"></i>
+                        </div>
+                        <h3>Laboratorium</h3>
+                        <div class="toggle-icon">
+                            <i class="fa fa-plus"></i>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Pemeriksaan darah lengkap</li>
+                            <li>Pemeriksaan gula darah</li>
+                            <li>Pemeriksaan kolesterol</li>
+                            <li>Pemeriksaan asam urat</li>
+                            <li>Pemeriksaan dahak</li>
+                            <li>Pemeriksaan malaria</li>
+                            <li>Golongan darah</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Ruang Imunisasi -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="500" onclick="toggleService(this)">
+                    <div class="card-header">
+                        <div class="icon-box green">
+                            <i class="fa fa-syringe"></i>
+                        </div>
+                        <h3>Ruang Imunisasi</h3>
+                        <div class="toggle-icon">
+                            <i class="fa fa-plus"></i>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Penyimpanan vaksin (cold chain)</li>
+                            <li>Imunisasi dasar lengkap</li>
+                            <li>Imunisasi tambahan</li>
+                            <li>Pencatatan status imunisasi</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Tata Usaha -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="550" onclick="toggleService(this)">
+                    <div class="card-header">
+                        <div class="icon-box blue">
+                            <i class="fa fa-briefcase"></i>
+                        </div>
+                        <h3>Tata Usaha</h3>
+                        <div class="toggle-icon">
+                            <i class="fa fa-plus"></i>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Pembuatan surat menyurat</li>
+                            <li>Pengarsipan dokumen</li>
+                            <li>Administrasi kepegawaian</li>
+                            <li>Pelayanan surat keterangan</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pelayanan Luar Gedung -->
+        <div class="service-category">
+            <div class="section-header" data-aos="fade-up">
+                <h2><i class="fa fa-home"></i> Pelayanan Luar Gedung</h2>
+                <div class="divider"></div>
+            </div>
+
+            <div class="service-grid">
+                <!-- Posyandu Balita -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100" onclick="toggleService(this)">
+                    <div class="card-header">
+                        <div class="icon-box teal">
+                            <i class="fa fa-child"></i>
+                        </div>
+                        <h3>Posyandu Balita</h3>
+                        <div class="toggle-icon">
+                            <i class="fa fa-plus"></i>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Penimbangan berat badan</li>
+                            <li>Pengukuran tinggi badan</li>
+                            <li>Pemberian imunisasi</li>
+                            <li>Pemantauan status gizi</li>
+                            <li>Penyuluhan kesehatan</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Posyandu Lansia -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="150" onclick="toggleService(this)">
+                    <div class="card-header">
+                        <div class="icon-box blue">
+                            <i class="fa fa-wheelchair"></i>
+                        </div>
+                        <h3>Posyandu Lansia</h3>
+                        <div class="toggle-icon">
+                            <i class="fa fa-plus"></i>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Pemeriksaan kesehatan rutin</li>
+                            <li>Pemeriksaan tekanan darah</li>
+                            <li>Gula darah dan kolesterol</li>
+                            <li>Pemberian obat-obatan</li>
+                            <li>Konsultasi kesehatan lansia</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Promosi Kesehatan -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200" onclick="toggleService(this)">
+                    <div class="card-header">
+                        <div class="icon-box orange">
+                            <i class="fa fa-bullhorn"></i>
+                        </div>
+                        <h3>Promosi Kesehatan</h3>
+                        <div class="toggle-icon">
+                            <i class="fa fa-plus"></i>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Penyuluhan di desa-desa</li>
+                            <li>Edukasi PHBS (Perilaku Hidup Bersih Sehat)</li>
+                            <li>Kampanye kesehatan masyarakat</li>
+                            <li>Pemberdayaan kader kesehatan</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Kunjungan Rumah -->
+                <div class="service-card" data-aos="fade-up" data-aos-delay="250" onclick="toggleService(this)">
+                    <div class="card-header">
+                        <div class="icon-box green">
+                            <i class="fa fa-home"></i>
+                        </div>
+                        <h3>Kunjungan Rumah</h3>
+                        <div class="toggle-icon">
+                            <i class="fa fa-plus"></i>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Monitoring pasien kronis</li>
+                            <li>Pendampingan ibu hamil</li>
+                            <li>Follow-up pengobatan</li>
+                            <li>Edukasi keluarga pasien</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section" data-aos="fade-up">
+            <h3><i class="fa fa-phone"></i> Butuh Informasi Lebih Lanjut?</h3>
+            <p>Hubungi kami untuk konsultasi atau informasi seputar pelayanan Puskesmas</p>
+            <a href="kontak.html" class="cta-btn">Hubungi Kami</a>
+        </div>
+    </div>
+
+    <!-- Modern Footer -->
+    <footer class="modern-footer" id="footer" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+        <div class="container">
+            <div class="row">
+                <!-- Quick Links -->
+                <div class="col-lg-3 col-md-6 footer-widget footer-links">
+                    <h4><i class="fa fa-link"></i> Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html"><i class="fa fa-angle-right"></i> Home</a></li>
+                        <li><a href="Aboutus.html"><i class="fa fa-angle-right"></i> About Us</a></li>
+                        <li><a href="pelayanan.html"><i class="fa fa-angle-right"></i> Pelayanan</a></li>
+                        <li><a href="fasilitas.html"><i class="fa fa-angle-right"></i> Fasilitas</a></li>
+                        <li><a href="kontak.html"><i class="fa fa-angle-right"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="col-lg-3 col-md-6 footer-widget footer-contact">
+                    <h4><i class="fa fa-phone"></i> Contact Info</h4>
+                    <p><i class="fa fa-map-marker"></i> Daerah Istimewa Yogyakarta, Indonesia</p>
+                    <p><i class="fa fa-phone"></i> <strong>Phone:</strong> 021-345-678</p>
+                    <p><i class="fa fa-envelope"></i> <strong>Email:</strong> Puskesmas@contoh.com</p>
+                    <p><i class="fa fa-clock-o"></i> <strong>Hours:</strong> Mon-Fri: 08:00-16:00</p>
+                    <p><i class="fa fa-ambulance"></i> <strong>IGD:</strong> 24 Hours Service</p>
+                    
+                    <div class="footer-social">
+                        <a href="#" title="Facebook"><i class="fa fa-facebook"></i></a>
+                        <a href="#" title="Instagram"><i class="fa fa-instagram"></i></a>
+                        <a href="#" title="Twitter"><i class="fa fa-twitter"></i></a>
+                        <a href="#" title="YouTube"><i class="fa fa-youtube"></i></a>
+                        <a href="#" title="WhatsApp"><i class="fa fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- About Section -->
+                <div class="col-lg-3 col-md-6 footer-widget footer-info">
+                    <h3><i class="fa fa-heartbeat"></i> PUSKESMAS</h3>
+                    <p>Suatu unit pelaksana fungsional yang berfungsi sebagai pusat pembangunan kesehatan, pusat
+                        pembinaan peran serta masyarakat dalam bidang kesehatan serta pusat pelayanan kesehatan
+                        tingkat pertama.</p>
+                    <p style="margin-top: 15px;"><strong>Motto:</strong> "Melayani dengan Hati untuk Kesehatan Masyarakat"</p>
+                </div>
+
+                <!-- Opening Hours -->
+                <div class="col-lg-3 col-md-6 footer-widget">
+                    <h4><i class="fa fa-clock-o"></i> Opening Hours</h4>
+                    <div style="color: rgba(255,255,255,0.8); font-size: 14px; line-height: 2;">
+                        <p style="margin-bottom: 8px;"><i class="fa fa-calendar" style="color: #0CB8B6;"></i> Monday - Friday</p>
+                        <p style="margin-left: 30px; color: rgba(255,255,255,0.6);">08:00 AM - 04:00 PM</p>
+                        
+                        <p style="margin-bottom: 8px; margin-top: 15px;"><i class="fa fa-calendar" style="color: #0CB8B6;"></i> Saturday</p>
+                        <p style="margin-left: 30px; color: rgba(255,255,255,0.6);">08:00 AM - 12:00 PM</p>
+                        
+                        <p style="margin-bottom: 8px; margin-top: 15px;"><i class="fa fa-calendar" style="color: #0CB8B6;"></i> Sunday</p>
+                        <p style="margin-left: 30px; color: rgba(255,255,255,0.6);">Closed (IGD 24 Hours)</p>
+                        
+                        <p style="margin-top: 15px; padding: 10px; background: rgba(12, 184, 182, 0.2); border-radius: 5px; text-align: center;">
+                            <i class="fa fa-ambulance" style="color: #0CB8B6;"></i> <strong>Emergency: 24/7</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="copyright">
+                            <i class="fa fa-copyright"></i> 2024 <strong><span>Puskesmas</span></strong>. All Rights Reserved
+                        </p>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <p class="credits">
+                            Designed with <i class="fa fa-heart" style="color: #e74c3c;"></i> by <a href="aboutus.html">Dicky Ade Mahendra</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back to Top Button -->
+        <a href="#" class="back-to-top" id="backToTop" title="Back to Top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </footer>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="contactform/contactform.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init();</script>
+
+    <script>
+        function toggleService(card) {
+            // Close all other cards
+            const allCards = document.querySelectorAll('.service-card');
+            allCards.forEach(c => {
+                if (c !== card) {
+                    c.classList.remove('active');
+                    c.querySelector('.toggle-icon i').classList.remove('fa-minus');
+                    c.querySelector('.toggle-icon i').classList.add('fa-plus');
+                }
+            });
+
+            // Toggle clicked card
+            card.classList.toggle('active');
+            const icon = card.querySelector('.toggle-icon i');
+            if (card.classList.contains('active')) {
+                icon.classList.remove('fa-plus');
+                icon.classList.add('fa-minus');
+            } else {
+                icon.classList.remove('fa-minus');
+                icon.classList.add('fa-plus');
+            }
+        }
+    </script>
+
+    <script>
+        // Back to top button visibility
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 300) {
+                $('#backToTop').addClass('visible');
+            } else {
+                $('#backToTop').removeClass('visible');
+            }
+        });
+
+        // Back to top click
+        $('#backToTop').click(function(e) {
+            e.preventDefault();
+            $('html, body').animate({ scrollTop: 0 }, 800, 'easeInOutExpo');
+        });
+    </script>
 </body>
+
+</html>

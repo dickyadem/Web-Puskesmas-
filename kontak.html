@@ -1,192 +1,816 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
-    <title>Contact Us</title>
-    <meta content="" name="descriptison">
-    <meta content="" name="keywords">
+    <title>Contact Us - Puskesmas</title>
+    <meta content="Hubungi Puskesmas - Alamat, Email, dan Telepon" name="description">
+    <meta content="puskesmas, kesehatan, kontak, contact" name="keywords">
     <meta charset="utf-8">
-    <meta name="viewport" content="width-device-width,initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Candal">
     <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style2.css">
-    <link href="boxicons.min.css" rel="stylesheet">
+    <link href="css/boxicons.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* Contact Page Specific Styles */
+        .contact-hero {
+            background: linear-gradient(135deg, rgba(12, 184, 182, 0.95) 0%, rgba(104, 164, 196, 0.95) 100%);
+            min-height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .contact-hero h1 {
+            color: #fff;
+            font-size: 48px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin: 0 0 15px 0;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-hero p {
+            color: #fff;
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .contact-section {
+            padding: 60px 0;
+        }
+
+        .contact-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .contact-info-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 35px 25px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .contact-info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(12, 184, 182, 0.3);
+        }
+
+        .contact-info-card .icon-wrapper {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0CB8B6, #68A4C4);
+            box-shadow: 0 10px 25px rgba(12, 184, 182, 0.4);
+        }
+
+        .contact-info-card .icon-wrapper i {
+            color: #fff;
+            font-size: 36px;
+        }
+
+        .contact-info-card h3 {
+            color: #0073e6;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .contact-info-card p {
+            color: #666;
+            font-size: 15px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .contact-info-card a {
+            color: #0CB8B6;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info-card a:hover {
+            color: #68A4C4;
+        }
+
+        /* Contact Form Section */
+        .contact-form-wrapper {
+            background: #fff;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form-wrapper h3 {
+            color: #0073e6;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .contact-form-wrapper h3::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #0CB8B6, #68A4C4);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            color: #333;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .form-group label i {
+            color: #0CB8B6;
+            margin-right: 5px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #0CB8B6;
+            box-shadow: 0 0 0 3px rgba(12, 184, 182, 0.1);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #0CB8B6, #68A4C4);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(12, 184, 182, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Map Section */
+        .map-section {
+            padding: 60px 0;
+            background: linear-gradient(135deg, #f3f8fa 0%, #e8f4f8 100%);
+        }
+
+        .map-container {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+        }
+
+        /* Social Media Section */
+        .social-section {
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .social-section h3 {
+            color: #0073e6;
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0CB8B6, #68A4C4);
+            color: #fff;
+            font-size: 24px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(12, 184, 182, 0.3);
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 30px rgba(12, 184, 182, 0.5);
+            color: #fff;
+        }
+
+        /* Contact Info List */
+        .contact-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .contact-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            color: #555;
+            font-size: 15px;
+        }
+
+        .contact-list li:last-child {
+            border-bottom: none;
+        }
+
+        .contact-list li i {
+            width: 30px;
+            color: #0CB8B6;
+            font-size: 18px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .contact-hero h1 {
+                font-size: 32px;
+            }
+
+            .contact-hero p {
+                font-size: 14px;
+            }
+
+            .contact-form-wrapper {
+                padding: 25px;
+            }
+
+            .contact-info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Modern Footer Styles */
+        .modern-footer {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #fff;
+            padding-top: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modern-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #0CB8B6, #68A4C4, #0CB8B6);
+            background-size: 200% 100%;
+            animation: gradientMove 3s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .footer-widget {
+            margin-bottom: 40px;
+        }
+
+        .footer-widget h4 {
+            color: #0CB8B6;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .footer-widget h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, #0CB8B6, #68A4C4);
+        }
+
+        .footer-widget h3 {
+            color: #0CB8B6;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .footer-links ul li a:hover {
+            color: #0CB8B6;
+            padding-left: 10px;
+        }
+
+        .footer-links ul li a i {
+            margin-right: 10px;
+            font-size: 12px;
+            color: #0CB8B6;
+        }
+
+        .footer-contact p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+            line-height: 2;
+            margin-bottom: 15px;
+        }
+
+        .footer-contact p i {
+            color: #0CB8B6;
+            margin-right: 10px;
+            width: 20px;
+        }
+
+        .footer-contact p strong {
+            color: #fff;
+        }
+
+        .footer-info p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .footer-social {
+            margin-top: 20px;
+        }
+
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(12, 184, 182, 0.2);
+            color: #0CB8B6;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .footer-social a:hover {
+            background: linear-gradient(135deg, #0CB8B6, #68A4C4);
+            color: #fff;
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 25px 0;
+            margin-top: 40px;
+        }
+
+        .footer-bottom .copyright {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .footer-bottom .credits {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 13px;
+            margin: 10px 0 0 0;
+        }
+
+        .footer-bottom .credits a {
+            color: #0CB8B6;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom .credits a:hover {
+            color: #68A4C4;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0CB8B6, #68A4C4);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            text-decoration: none;
+            box-shadow: 0 5px 20px rgba(12, 184, 182, 0.4);
+            transition: all 0.3s ease;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(12, 184, 182, 0.6);
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .modern-footer {
+                padding-top: 40px;
+            }
+
+            .footer-widget {
+                margin-bottom: 30px;
+                text-align: center;
+            }
+
+            .footer-widget h4::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .footer-links ul li a {
+                justify-content: center;
+            }
+
+            .footer-social {
+                text-align: center;
+            }
+
+            .footer-bottom .copyright,
+            .footer-bottom .credits {
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 
-
 <body>
-    <!--banner-->
-    <section id="fasi" class="banner">
-        <div class="fasili">
-            <nav class="navbar navbar-default navbar-fixed-top">
-                <div class="container">
-                    <div class="col-md-12">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            <a class="text" href="index.html">
-                                PUSKESMAS
-                            </a>
-                        </div>
-                        <div class="collapse navbar-collapse navbar-right" id="myNavbar">
-                            <ul class="nav navbar-nav">
-                                <li class=""><a href="index.html">Home</a></li>
-                                <li class=""><a href="Aboutus.html">About Us</a></li>
-                                <li class=""><a href="kontak.html">Contact Us</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-            <div class="atap">
+    <!-- Hero Section -->
+    <section class="contact-hero">
+        <div data-aos="fade-down" data-aos-duration="800">
+            <h1><i class="fa fa-envelope"></i> Hubungi Kami</h1>
+            <p>Kami siap melayani pertanyaan dan kebutuhan kesehatan Anda</p>
+        </div>
+    </section>
 
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <!-- Contact Info Cards -->
+            <div class="contact-info-grid">
+                <div class="contact-info-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="icon-wrapper">
+                        <i class="fa fa-map-marker"></i>
+                    </div>
+                    <h3>Alamat</h3>
+                    <p>Daerah Istimewa Yogyakarta<br>Indonesia</p>
+                </div>
+
+                <div class="contact-info-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon-wrapper">
+                        <i class="fa fa-phone"></i>
+                    </div>
+                    <h3>Telepon</h3>
+                    <p><a href="tel:021345678">021-345-678</a></p>
+                    <p style="margin-top: 10px; font-size: 13px; color: #999;">Senin - Jumat, 08:00 - 16:00</p>
+                </div>
+
+                <div class="contact-info-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="icon-wrapper">
+                        <i class="fa fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <p><a href="mailto:Puskesmas@contoh.com">Puskesmas@contoh.com</a></p>
+                    <p style="margin-top: 10px; font-size: 13px; color: #999;">Respon dalam 1-2 hari kerja</p>
+                </div>
+
+                <div class="contact-info-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="icon-wrapper">
+                        <i class="fa fa-clock-o"></i>
+                    </div>
+                    <h3>Jam Operasional</h3>
+                    <p>Senin - Jumat: 08:00 - 16:00<br>Sabtu: 08:00 - 12:00</p>
+                    <p style="margin-top: 10px; font-size: 13px; color: #0CB8B6; font-weight: 600;">IGD 24 Jam</p>
+                </div>
             </div>
 
-            <center>
-                <h1 class="judul3"> <strong>CONTACT US</strong> </h1>
-            </center>
-
-            <!-- ======= Contact Section ======= -->
-            <section class="contact" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
-                <div class="container">
-
-                    <div class="row">
-
-                        <div class="col-lg-6">
-
+            <!-- Contact Form & Info -->
+            <div class="row">
+                <div class="col-lg-7" data-aos="fade-right">
+                    <div class="contact-form-wrapper">
+                        <h3>Kirim Pesan</h3>
+                        <form action="forms/contact.php" method="post" role="form" class="php-email-form">
                             <div class="row">
-                                <div class="col-md-12">
-                                    <div class="info-box">
-
-                                        <h3>Our Address</h3>
-                                        <p> DIY, INDONESIA</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="info-box">
-
-                                        <h3>Email Us</h3>
-                                        <p>Puskesmas@contoh.com</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="info-box">
-
-                                        <h3>Call Us</h3>
-                                        <p>021-345-678</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="col-lg-6">
-                            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-                                <div class="form-row">
-                                    <div class="col-md-6 form-group">
-                                        <input type="text" name="name" class="form-control" id="name"
-                                            placeholder="Your Name" data-rule="minlen:4"
-                                            data-msg="Please enter at least 4 chars" />
-                                        <div class="validate"></div>
-                                    </div>
-                                    <div class="col-md-6 form-group">
-                                        <input type="email" class="form-control" name="email" id="email"
-                                            placeholder="Your Email" data-rule="email"
-                                            data-msg="Please enter a valid email" />
-                                        <div class="validate"></div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="subject" id="subject"
-                                        placeholder="Subject" data-rule="minlen:4"
-                                        data-msg="Please enter at least 8 chars of subject" />
+                                <div class="col-md-6 form-group">
+                                    <label for="name"><i class="fa fa-user"></i> Nama Lengkap</label>
+                                    <input type="text" name="name" class="form-control" id="name"
+                                        placeholder="Masukkan nama Anda" data-rule="minlen:4"
+                                        data-msg="Silakan masukkan minimal 4 karakter" />
                                     <div class="validate"></div>
                                 </div>
-                                <div class="form-group">
-                                    <textarea class="form-control" name="message" rows="5" data-rule="required"
-                                        data-msg="Please write something for us" placeholder="Message"></textarea>
+                                <div class="col-md-6 form-group">
+                                    <label for="email"><i class="fa fa-envelope"></i> Email</label>
+                                    <input type="email" class="form-control" name="email" id="email"
+                                        placeholder="email@contoh.com" data-rule="email"
+                                        data-msg="Silakan masukkan email yang valid" />
                                     <div class="validate"></div>
                                 </div>
-                                <div class="mb-3">
-                                    <div class="loading">Loading</div>
-                                    <div class="error-message"></div>
-                                    <div class="sent-message">Your message has been sent. Thank you!</div>
-                                </div>
-                                <div class="text-center"><button type="submit">Send Message</button></div>
-                            </form>
-                        </div>
-
-                    </div>
-
-                </div>
-            </section><!-- End Contact Section -->
-
-            <!-- ======= Footer ======= -->
-            <footer id="footer" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
-
-                <div class="footer-top">
-                    <div class="container">
-                        <div class="row">
-
-                            <div class="col-lg-3 col-md-6 footer-links">
-                                <h4>Useful Links</h4>
-                                <ul>
-                                    <li> <a href="index.html">Home</a></li>
-                                    <li> <a href="Aboutus.html">About Us</a></li>
-                                    <li><a href="kontak.html">Contact Us</a></li>
-                                </ul>
                             </div>
-                            <div class="col-lg-3 col-md-6 footer-contact">
-                                <h4>Contact Us</h4>
-                                <p>
-                                    Puskesmas <br>
-                                    Daerah Istimewa Yogyakarta<br>
-                                    Indonesia <br><br>
-                                    <strong>Phone:</strong> 021-345-678<br>
-                                    <strong>Email:</strong> Puskesmas@contoh.com<br>
-                                </p>
-
+                            <div class="form-group">
+                                <label for="subject"><i class="fa fa-tag"></i> Subjek</label>
+                                <input type="text" class="form-control" name="subject" id="subject"
+                                    placeholder="Subjek pesan Anda" data-rule="minlen:4"
+                                    data-msg="Silakan masukkan minimal 4 karakter" />
+                                <div class="validate"></div>
                             </div>
-
-                            <div class="col-lg-3 col-md-6 footer-info">
-                                <h3>About PUSKESMAS</h3>
-                                <p>suatu unit pelaksana fungsional yang berfungsi sebagai pusat pembangunan kesehatan,
-                                    pusat
-                                    pembinaan peran serta masyarakat dalam bidang kesehatan serta pusat pelayanan
-                                    kesehatan
-                                    tingkat pertama yang menyelenggarakan kegiatannya secara menyeluruh, terpadu yang
-                                    berkesinambungan pada suatu masyarakat</p>
-
+                            <div class="form-group">
+                                <label for="message"><i class="fa fa-comment"></i> Pesan</label>
+                                <textarea class="form-control" name="message" rows="5" data-rule="required"
+                                    data-msg="Silakan tulis pesan Anda" placeholder="Tulis pesan Anda di sini..."></textarea>
+                                <div class="validate"></div>
                             </div>
-
-                        </div>
+                            <div class="mb-3">
+                                <div class="loading">Loading</div>
+                                <div class="error-message"></div>
+                                <div class="sent-message">Pesan Anda telah terkirim. Terima kasih!</div>
+                            </div>
+                            <button type="submit" class="submit-btn">
+                                <i class="fa fa-paper-plane"></i> Kirim Pesan
+                            </button>
+                        </form>
                     </div>
                 </div>
 
-               
-                <div class="container">
-                    <div class="copyright">
-                        &copy; Copyright <strong><span>Adem</span></strong>. All Rights Reserved
-                    </div>
-                    <div class="credits">
-
-                        Designed by <a href="aboutus.html">Dicky Ade Mahendra</a>
+                <div class="col-lg-5" data-aos="fade-left">
+                    <div class="contact-form-wrapper">
+                        <h3>Informasi Kontak</h3>
+                        <ul class="contact-list">
+                            <li>
+                                <i class="fa fa-map-marker"></i>
+                                <span>Daerah Istimewa Yogyakarta, Indonesia</span>
+                            </li>
+                            <li>
+                                <i class="fa fa-phone"></i>
+                                <span>021-345-678</span>
+                            </li>
+                            <li>
+                                <i class="fa fa-envelope"></i>
+                                <span>Puskesmas@contoh.com</span>
+                            </li>
+                            <li>
+                                <i class="fa fa-clock-o"></i>
+                                <span>Senin - Jumat: 08:00 - 16:00</span>
+                            </li>
+                            <li>
+                                <i class="fa fa-clock-o"></i>
+                                <span>Sabtu: 08:00 - 12:00</span>
+                            </li>
+                            <li>
+                                <i class="fa fa-ambulance"></i>
+                                <span>IGD: 24 Jam Setiap Hari</span>
+                            </li>
+                            <li>
+                                <i class="fa fa-wheelchair"></i>
+                                <span>Akses Ramah Disabilitas</span>
+                            </li>
+                            <li>
+                                <i class="fa fa-wifi"></i>
+                                <span>WiFi Gratis untuk Pasien</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-            </footer><!-- End Footer -->
-            <script src="js/jquery.min.js"></script>
-            <script src="js/jquery.easing.min.js"></script>
-            <script src="js/bootstrap.min.js"></script>
-            <script src="js/custom.js"></script>
-            <script src="contactform/contactform.js"></script>
+            </div>
+        </div>
     </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <div class="map-container" data-aos="fade-up">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253128.7636611793!2d110.20975309999999!3d-7.8013298!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a579c2a1e6d4b%3A0x2e48c07c3b4c1c0!2sYogyakarta%2C%20Daerah%20Istimewa%20Yogyakarta!5e0!3m2!1sen!2sid!4v1234567890"
+                    allowfullscreen="" loading="lazy" title="Lokasi Puskesmas">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="social-section">
+        <div class="container" data-aos="fade-up">
+            <h3>Ikuti Kami di Media Sosial</h3>
+            <div class="social-links">
+                <a href="#" class="social-link" title="Facebook">
+                    <i class="fa fa-facebook"></i>
+                </a>
+                <a href="#" class="social-link" title="Instagram">
+                    <i class="fa fa-instagram"></i>
+                </a>
+                <a href="#" class="social-link" title="Twitter">
+                    <i class="fa fa-twitter"></i>
+                </a>
+                <a href="#" class="social-link" title="YouTube">
+                    <i class="fa fa-youtube"></i>
+                </a>
+                <a href="#" class="social-link" title="WhatsApp">
+                    <i class="fa fa-whatsapp"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modern Footer -->
+    <footer class="modern-footer" id="footer" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+        <div class="container">
+            <div class="row">
+                <!-- Quick Links -->
+                <div class="col-lg-3 col-md-6 footer-widget footer-links">
+                    <h4><i class="fa fa-link"></i> Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html"><i class="fa fa-angle-right"></i> Home</a></li>
+                        <li><a href="Aboutus.html"><i class="fa fa-angle-right"></i> About Us</a></li>
+                        <li><a href="pelayanan.html"><i class="fa fa-angle-right"></i> Pelayanan</a></li>
+                        <li><a href="fasilitas.html"><i class="fa fa-angle-right"></i> Fasilitas</a></li>
+                        <li><a href="kontak.html"><i class="fa fa-angle-right"></i> Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="col-lg-3 col-md-6 footer-widget footer-contact">
+                    <h4><i class="fa fa-phone"></i> Contact Info</h4>
+                    <p><i class="fa fa-map-marker"></i> Daerah Istimewa Yogyakarta, Indonesia</p>
+                    <p><i class="fa fa-phone"></i> <strong>Phone:</strong> 021-345-678</p>
+                    <p><i class="fa fa-envelope"></i> <strong>Email:</strong> Puskesmas@contoh.com</p>
+                    <p><i class="fa fa-clock-o"></i> <strong>Hours:</strong> Mon-Fri: 08:00-16:00</p>
+                    <p><i class="fa fa-ambulance"></i> <strong>IGD:</strong> 24 Hours Service</p>
+                    
+                    <div class="footer-social">
+                        <a href="#" title="Facebook"><i class="fa fa-facebook"></i></a>
+                        <a href="#" title="Instagram"><i class="fa fa-instagram"></i></a>
+                        <a href="#" title="Twitter"><i class="fa fa-twitter"></i></a>
+                        <a href="#" title="YouTube"><i class="fa fa-youtube"></i></a>
+                        <a href="#" title="WhatsApp"><i class="fa fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- About Section -->
+                <div class="col-lg-3 col-md-6 footer-widget footer-info">
+                    <h3><i class="fa fa-heartbeat"></i> PUSKESMAS</h3>
+                    <p>Suatu unit pelaksana fungsional yang berfungsi sebagai pusat pembangunan kesehatan, pusat
+                        pembinaan peran serta masyarakat dalam bidang kesehatan serta pusat pelayanan kesehatan
+                        tingkat pertama.</p>
+                    <p style="margin-top: 15px;"><strong>Motto:</strong> "Melayani dengan Hati untuk Kesehatan Masyarakat"</p>
+                </div>
+
+                <!-- Opening Hours -->
+                <div class="col-lg-3 col-md-6 footer-widget">
+                    <h4><i class="fa fa-clock-o"></i> Opening Hours</h4>
+                    <div style="color: rgba(255,255,255,0.8); font-size: 14px; line-height: 2;">
+                        <p style="margin-bottom: 8px;"><i class="fa fa-calendar" style="color: #0CB8B6;"></i> Monday - Friday</p>
+                        <p style="margin-left: 30px; color: rgba(255,255,255,0.6);">08:00 AM - 04:00 PM</p>
+                        
+                        <p style="margin-bottom: 8px; margin-top: 15px;"><i class="fa fa-calendar" style="color: #0CB8B6;"></i> Saturday</p>
+                        <p style="margin-left: 30px; color: rgba(255,255,255,0.6);">08:00 AM - 12:00 PM</p>
+                        
+                        <p style="margin-bottom: 8px; margin-top: 15px;"><i class="fa fa-calendar" style="color: #0CB8B6;"></i> Sunday</p>
+                        <p style="margin-left: 30px; color: rgba(255,255,255,0.6);">Closed (IGD 24 Hours)</p>
+                        
+                        <p style="margin-top: 15px; padding: 10px; background: rgba(12, 184, 182, 0.2); border-radius: 5px; text-align: center;">
+                            <i class="fa fa-ambulance" style="color: #0CB8B6;"></i> <strong>Emergency: 24/7</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="copyright">
+                            <i class="fa fa-copyright"></i> 2024 <strong><span>Puskesmas</span></strong>. All Rights Reserved
+                        </p>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <p class="credits">
+                            Designed with <i class="fa fa-heart" style="color: #e74c3c;"></i> by <a href="aboutus.html">Dicky Ade Mahendra</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back to Top Button -->
+        <a href="#" class="back-to-top" id="backToTop" title="Back to Top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </footer>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="contactform/contactform.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init();</script>
+
+    <script>
+        // Back to top button visibility
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 300) {
+                $('#backToTop').addClass('visible');
+            } else {
+                $('#backToTop').removeClass('visible');
+            }
+        });
+
+        // Back to top click
+        $('#backToTop').click(function(e) {
+            e.preventDefault();
+            $('html, body').animate({ scrollTop: 0 }, 800, 'easeInOutExpo');
+        });
+    </script>
 </body>
-
-
 
 </html>

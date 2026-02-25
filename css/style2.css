@@ -2,7 +2,6 @@ body {
     font-family: 'Open Sans', sans-serif;
     line-height: 20px;
     color: #ffffff;
-    font-size: 300;
     font-size: 16px;
     padding: 10px;
 }
@@ -22,7 +21,7 @@ header
 }
 
 .ab {
-    padding: 30x;
+    padding: 30px;
 }
 
 .atap {
@@ -786,7 +785,7 @@ aboutus
     float: right;
     width: 75%;
     background-color: #f1f1f1;
-    padding-left: 20 px;
+    padding-left: 20px;
 }
 
 .kartu {
@@ -1174,4 +1173,58 @@ pelayanan
 
 #footer .credits a {
     color: #a2cce3;
+}
+
+/* Pelayanan page styles */
+li {
+    color: black;
+}
+
+h1 {
+    font-size: 35px;
+}
+
+.tengah {
+    text-align: center;
+}
+
+.rata {
+    text-align: justify;
+}
+
+.section-title {
+    text-align: left;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.section-title h2 {
+    font-size: 28px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+.section-title h2::before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 120px;
+    height: 1px;
+    background: rgb(24, 23, 23);
+    bottom: 1px;
+    left: calc(50% - 60px);
+}
+
+.section-title h2::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: #f00bbe;
+    bottom: 0;
+    left: calc(50% - 20px);
 }
